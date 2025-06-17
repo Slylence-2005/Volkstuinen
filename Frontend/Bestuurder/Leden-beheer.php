@@ -62,32 +62,31 @@ checkSession($allowedUserTypes = [3]);
                 $conn = Database::GetConnection();
 
                 // Fetch members
-                $query = "SELECT Name, Complex, Email, TuinNummer FROM users";
+                $query = "SELECT 
+            Name, 
+            Complex, 
+            Email, 
+            GROUP_CONCAT(TuinNummer ORDER BY TuinNummer SEPARATOR ', ') AS TuinNummers 
+          FROM users 
+          GROUP BY Name, Email, Complex";
                 $stmt = $conn->query($query);
 
-                $firstRow = $stmt->fetch(PDO::FETCH_ASSOC);
-                if ($firstRow) {
-                    // Output the first row
-                    echo "<tr>
-                            <td>" . htmlspecialchars($firstRow["Name"]) . "</td>
-                            <td>" . htmlspecialchars($firstRow["Complex"]) . "</td>
-                            <td>?</td> <!-- m² data isn't in DB, so placeholder -->
-                            <td>" . htmlspecialchars($firstRow["Email"]) . "</td>
-                            <td>" . htmlspecialchars($firstRow["TuinNummer"]) . "</td>
-                        </tr>";
-                    // Output the rest
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<tr>
-                                <td>" . htmlspecialchars($row["Name"]) . "</td>
-                                <td>" . htmlspecialchars($row["Complex"]) . "</td>
-                                <td>?</td>
-                                <td>" . htmlspecialchars($row["Email"]) . "</td>
-                                <td>" . htmlspecialchars($row["TuinNummer"]) . "</td>
-                            </tr>";
-                        }
-                    } else {
-                    echo "<tr><td colspan='4'>Geen leden gevonden.</td></tr>";
-                    }
+                $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($rows) {
+    foreach ($rows as $row) {
+        echo "<tr>
+                <td>" . htmlspecialchars($row["Name"]) . "</td>
+                <td>" . htmlspecialchars($row["Complex"]) . "</td>
+                <td>?</td> <!-- Placeholder for m² -->
+                <td>" . htmlspecialchars($row["Email"]) . "</td>
+                <td>" . htmlspecialchars($row["TuinNummers"]) . "</td>
+              </tr>";
+    }
+} else {
+    echo "<tr><td colspan='5'>Geen leden gevonden.</td></tr>";
+}
+
                 $conn = null;
                 ?>
 
