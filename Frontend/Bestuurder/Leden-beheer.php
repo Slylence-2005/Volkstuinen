@@ -59,34 +59,29 @@ checkSession($allowedUserTypes = [3]);
             <tbody>
                 
                 <?php
-                $conn = Database::GetConnection();
+            $conn = Database::GetConnection();
 
                 // Fetch members
-                $query = "SELECT 
-            Name, 
-            Complex, 
-            Email, 
-            GROUP_CONCAT(TuinNummer ORDER BY TuinNummer SEPARATOR ', ') AS TuinNummers 
-          FROM users 
-          GROUP BY Name, Email, Complex";
+                $query = "SELECT Name, Complex, Email, GROUP_CONCAT(TuinNummer ORDER BY TuinNummer SEPARATOR ', ') AS TuinNummers 
+                FROM users 
+                GROUP BY Name, Email, Complex";
                 $stmt = $conn->query($query);
 
                 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($rows) {
-    foreach ($rows as $row) {
-        echo "<tr>
-                <td>" . htmlspecialchars($row["Name"]) . "</td>
-                <td>" . htmlspecialchars($row["Complex"]) . "</td>
-                <td>?</td> <!-- Placeholder for m² -->
-                <td>" . htmlspecialchars($row["Email"]) . "</td>
-                <td>" . htmlspecialchars($row["TuinNummers"]) . "</td>
-              </tr>";
-    }
-} else {
-    echo "<tr><td colspan='5'>Geen leden gevonden.</td></tr>";
-}
-
+            if ($rows) {
+            foreach ($rows as $row) {
+                echo "<tr>
+                    <td>" . htmlspecialchars($row["Name"]) . "</td>
+                    <td>" . htmlspecialchars($row["Complex"]) . "</td>
+                    <td>?</td> <!-- Placeholder for m² -->
+                    <td>" . htmlspecialchars($row["Email"]) . "</td>
+                    <td>?</td>
+                </tr>";
+            }
+            } else {
+                echo "<tr><td colspan='5'>Geen leden gevonden.</td></tr>";
+            }
                 $conn = null;
                 ?>
 
