@@ -30,24 +30,13 @@ $role = $_SESSION['user_type'] ?? null; // Avoid undefined index warning
 // Get PDO connection
 $conn = Database::GetConnection();
 
-// Corrected query - no join needed
-$sql = "SELECT Email, Usertype, Name FROM users WHERE id = :user_id";
+// Allowed sort fields matching your DB columns
+$allowedSortFields = ['Name', 'request_date', 'Parcel'];
+$sort = isset($_GET['sort']) && in_array($_GET['sort'], $allowedSortFields) ? $_GET['sort'] : 'request_date';
 
-$stmt = $conn->prepare($sql);
-$stmt->execute(['user_id' => $user_id]);
-$user = $stmt->fetch();
-
-// Fallback to email if naam is not set
-$naam = htmlspecialchars($user['Name'] ?? $user['Email']);
-
-$conn = Database::GetConnection();
-
-// Sorting logic
-$allowedSortFields = ['Name', 'RequestDate', 'Complex'];
-$sort = isset($_GET['sort']) && in_array($_GET['sort'], $allowedSortFields) ? $_GET['sort'] : 'Request_Date';
 $orderBy = "ORDER BY $sort ASC";
 
-// Fetch data
+// Fetch data from waiting_list
 $stmt = $conn->query("SELECT Name, Parcel, motive, requested_meters, request_date FROM waiting_list $orderBy");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -57,7 +46,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Wachtlijstbeheer - Volkstuin Vereniging Sittard</title>
-    <link rel="stylesheet" href="CSS-Admin/dashboard.css">
+    <link rel="stylesheet" href="CSS-Admin/dashboard.css"> <!-- Check path if needed -->
 </head>
 <body>
 
@@ -66,15 +55,37 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="Icoontjes">
         <a href="dashboard.php">
             <div class="icon1">
-                <img src="../Gedeeld/pictures/HomeMenuButton.svg" alt="Dashboard">
+                <img src="../Gedeeld/pictures/HomeMenuButton.svg" alt="huisknop">
+            </div>
+        </a>
+        <a href="../../Frontend/Admin/GebruikerInfo.php">
+            <div class="icon2">
+                <img src="../Gedeeld/pictures/UserMenuButton.svg" alt="settings">
+            </div>
+        </a>
+        <a href="../../Frontend/admin/aanvragen_beheer.php">
+            <div class="icon2">
+                <img src="../Gedeeld/pictures/persoonsgegevens.png" alt="settings">
+            </div>
+        </a>
+        <a href="../../Frontend/admin/Pending_changes.php">
+            <div class="icon2">
+                <img src="../Gedeeld/pictures/UserMenuButton.svg" alt="settings">
+            </div>
+        </a>
+        <a href="../../Frontend/admin/wachtrij_beheer.php">
+            <div class="icon2">
+                <img src="../Gedeeld/pictures/UserMenuButton.svg" alt="settings">
             </div>
         </a>
         <a href="../../Backend/logout.php">
             <div class="icon3">
-                <img src="../Gedeeld/pictures/ExitMenuButton.svg" alt="Uitloggen">
+                
+                <img src="../Gedeeld/pictures/ExitMenuButton.svg" alt="uitloggen">
             </div>
         </a>
     </div>
+</div> <!-- CLOSE sidebar -->
 
 <div class="header">VOLKSTUIN VERENIGING SITTARD</div>
 
@@ -83,22 +94,22 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="content">
         <form method="GET" style="margin-bottom: 20px;">
-    <label for="sort">Sorteer op:</label>
-    <select name="sort" id="sort" onchange="this.form.submit()">
-        <option value="Name" <?php if($sort == 'Name') echo 'selected'; ?>>Naam</option>
-        <option value="Parcel" <?php if($sort == 'Parcel') echo 'selected'; ?>>Complex</option>
-        <option value="Request_Date" <?php if($sort == 'Request_Date') echo 'selected'; ?>>Datum</option>
-    </select>
-</form>
+            <label for="sort">Sorteer op:</label>
+            <select name="sort" id="sort" onchange="this.form.submit()">
+                <option value="Name" <?php if($sort == 'Name') echo 'selected'; ?>>Naam</option>
+                <option value="Parcel" <?php if($sort == 'Parcel') echo 'selected'; ?>>Complex</option>
+                <option value="request_date" <?php if($sort == 'request_date') echo 'selected'; ?>>Datum</option>
+            </select>
+        </form>
+
         <table border="1" cellpadding="10" cellspacing="0" class="data-table">
             <thead>
                 <tr>
-                    <th>Naam</a></th>
-
-                    <th>Complex</a></th>
+                    <th>Naam</th>
+                    <th>Complex</th>
                     <th>Meters Aangevraagd</th>
                     <th>Reden</th>
-                    <th>Datum</a></th>
+                    <th>Datum</th>
                 </tr>
             </thead>
             <tbody>
@@ -106,7 +117,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <?php foreach ($rows as $row): ?>
                         <tr>
                             <td><?= htmlspecialchars($row['Name']) ?></td>
-
                             <td><?= htmlspecialchars($row['Parcel']) ?></td>
                             <td><?= htmlspecialchars($row['requested_meters']) ?></td>
                             <td><?= htmlspecialchars($row['motive']) ?></td>
@@ -114,12 +124,12 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="6">Geen resultaten gevonden.</td></tr>
+                    <tr><td colspan="5">Geen resultaten gevonden.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
-</div>
+</div> <!-- CLOSE main-container -->
 
 </body>
 </html>
