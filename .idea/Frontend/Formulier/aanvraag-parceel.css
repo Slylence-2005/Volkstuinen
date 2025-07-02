@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    
+  }
+
+/* Sidebar */
+.sidebar {
+  width: 80px;
+  background-color: #38393c;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1001; 
+}
+
+.sidebar img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.sidebar .icon {
+  width: 40px;
+  height: 40px;
+  background-color: #1c1d20;
+  border-radius: 5px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+  .header {
+    height: 60px;
+    background-color: #4A8C2C;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 60px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .content {
+    margin-left: 60px;
+    padding: 20px;
+  }
+
+  .content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+  }
+  .form-container {
+    background-color: #222;
+    padding: 27.6px; /* Nog 20% groter */
+    border-radius: 13.8px; /* Nog 20% groter */
+    width: 414px; /* Nog 20% groter */
+    text-align: center;
+    
+  }
+
+  .form-container label {
+    display: block;
+    margin-bottom: 16px; /* Nog 20% groter */
+    font-size: 24px; /* Nog 20% groter */
+    text-align: left;
+  }
+
+  .form-container select, .form-container textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px; /* Nog 20% groter */
+    margin-bottom: 30px; /* Nog 20% groter */
+    border: 1px solid #555;
+    border-radius: 7px; /* Nog 20% groter */
+    background-color: #444;
+    color: #fff;
+    font-size: 14px; /* Nog 20% groter */
+  }
+
+  .form-container button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 15px 20px; /* Nog 20% groter */
+    font-size: 16px; /* Nog 20% groter */
+    cursor: pointer;
+    border-radius: 7px; /* Nog 20% groter */
+  }
+
+  .form-container button:hover {
+    background-color: #45a049;
+  }

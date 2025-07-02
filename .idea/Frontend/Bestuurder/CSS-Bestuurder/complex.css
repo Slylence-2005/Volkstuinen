@@ -1,0 +1,385 @@
+:root{
+  --modal-duration: 1s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(59 65 71);
+    color: white;
+    transition: transform 0.3s ease;
+    margin: 0;
+  }
+  
+  .header {
+    background-color: rgb(83 111 22);
+    padding: 30px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 75px;
+  }
+  
+  
+  .sidebar {
+    width: 80px;
+    background-color: rgb(43 48 53);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 1001;
+    margin: 0;
+  }
+  
+  
+  .sidebar img {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .sidebar .icon {
+    width: 40px;
+    height: 40px;
+    background-color: #1c1d20;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .main-container {
+    margin-left: 75px;
+    margin-top: 7.5vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+ .content{
+    display: block; 
+    background-color: rgb(43 48 53);
+    border-radius: 1%;
+    height: 800px;
+    margin-top: 10px;
+  }
+
+  .complex {
+    display: block;
+  }
+
+  /* Dit is alle css voor de inputs waar gegevens in komen te staan */
+  .input-text{
+    padding: 1%;
+    border-radius: 1rex;
+    width: 12.5%;
+    margin: 1rex;
+    background-color: rgb(59 65 71);
+    border: none;
+    color: #FFF;
+  }
+
+ .input-number {
+    padding: 1%;
+    border-radius: 1rex;
+    width: 25%;
+    margin: 1rex;
+    background-color: rgb(59 65 71);
+    border: none;
+    color: #FFF;
+  }
+
+ .input-email{
+    padding: 1%;
+    border-radius: 1rex;
+    width: 25%;
+    margin: 1rex;
+    background-color: rgb(59 65 71);
+    border: none;
+    color: #FFF;
+  }
+
+ .input-house{
+    padding: 1%;
+    border-radius: 1rex;
+    width: 7.5%;   
+    margin: 1rex;
+    background-color: rgb(59 65 71);
+    border: none;
+    color: #FFF;
+  }
+
+  .wijzigenbutton{
+  background-color: rgb(220 53 69);
+  padding: 1%;
+  border-radius: 1rex;
+  width: 12.5%;
+  border-color: rgb(220 53 69);
+  margin: 1rex;
+  position: fixed;
+  bottom: 4vh;
+  right: 3vh;
+  cursor: pointer;
+  }
+
+  /* Dit zorgt ervoor dat de pijltjes voor hoger en lager verdwijnen */
+  input::-webkit-outer-spin-button,   
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  margin: 0;
+  }
+
+  /* dividers */
+ .horizontaal {
+    border-top: 3px solid white;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .verticaal {
+    border-left: 6px solid white;
+    height: 70%;
+    position: absolute;
+    left: 35%;
+    margin-left: -3px;
+    margin-top: 48px;
+  }
+
+
+  .modal-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+  }
+
+  .verstuur-button{
+    margin: 1rex;
+    cursor: pointer;
+    background-color: rgb(83 111 22);
+    border-radius: 1rex;
+    padding: 1%;
+    border: none;
+    position: fixed;
+    top: 175px;
+    right: 50px;
+    width: 20vh;
+  }
+
+  .modal{
+    border-radius: 5px;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 400px;
+    background-color: rgb(43 48 53);
+  }
+
+  .modal-content{
+    padding: 20px;
+  }
+
+  .modal-form div{
+    margin: 20px 0;
+  }
+
+  .modal-form label {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .modal-form .form-input {
+    padding: 8px;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(59 65 71);
+    color: #fff;
+  }
+
+  .modal-form .form-input2 {
+    padding: 8px;
+    width: 100%;
+    height: 200px;
+    background-color: rgb(59 65 71);
+    color: #fff;
+  }
+
+  .close-button{
+    color: white;
+    background:red;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    border-radius: 1rex;
+  }
+
+  .submit-button{
+    padding: 10px 30px;  
+    background: green;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    border-radius: 1rex;
+  }
+
+  .modal-container .submit-btn {
+    padding: 10px 30px;
+    font-weight: bold;
+    background: crimson;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .complex {
+    position: absolute;
+    top: 175px; 
+    right: 25%;  
+  }
+
+  .complex-input {
+    padding: 1%;
+    border-radius: 1rex;
+    border: none;
+    width: 25%;   
+    margin: 1rex;
+    height: 3rem;
+    background-color: rgb(59 65 71);
+    color: #FFF;
+  }
+
+  .complex-foto{
+    width: 75vh;
+    height: 55vh;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 3rem;
+    background-color: rgb(59 65 71);
+    text-align: center;
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 3vh;
+  }
+
+::placeholder{
+    color: #fff;
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* javascript */
+    .modal-container.show-modal{
+      display: block;
+    }

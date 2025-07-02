@@ -1,0 +1,77 @@
+body {
+            background-color: #2e2e2e;
+            color: white;
+        }
+        .header {
+            background-color: #7cb342;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #3a3a3a;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        table {
+            width: 100%;
+            background-color: #4a4a4a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 14px;
+            border: 1px solid #666;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #689f38;
+            color: white;
+        }
+        .status-nieuw { color: orange; font-weight: bold; }
+        .status-goedgekeurd { color: #00e676; font-weight: bold; }
+        .status-afgewezen { color: #ff5252; font-weight: bold; }
+        .btn-back {
+            margin-top: 30px;
+            background-color: #7cb342;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-decoration: none;
+            color: white;
+        }
+        .btn-back:hover {
+            background-color: #689f38;
+        }
+        .status-banner {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .status-goedgekeurd-banner {
+            background-color: #2e7d32;
+            color: #a5d6a7;
+        }
+        .status-afgewezen-banner {
+            background-color: #b71c1c;
+            color: #ef9a9a;
+        }
+        .status-nieuw-banner {
+            background-color: #f57f17;
+            color: #fff59d;
+        }
+        details summary {
+            cursor: pointer;
+            color: #ffc107;
+        }

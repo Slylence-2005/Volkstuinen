@@ -1,0 +1,16 @@
+user type 4 admin  account gegevens:
+gebruikersnaam: admin
+wachtwoord: admin
+
+user type 3 bestuurder account gegevens:
+gebruikersnaam: bestuurder
+wachtwoord: bestuurder
+
+
+user type 2 beheerder account gegevens:
+gebruikersnaam: beheerder
+wachtwoord:	beheerder
+
+user type 1 deelnemer account gegevens:
+gebruikersnaam: deelnemer
+wachtwoord: deelnemer

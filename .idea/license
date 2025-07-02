@@ -1,0 +1,18 @@
+<?php
+// Start de sessie
+session_start();
+
+// Controleer of de gebruiker is ingelogd
+if (!isset($_SESSION['gebruiker'])) {
+    echo "Je bent niet ingelogd.";
+    exit;
+}
+
+// Haal de persoonlijke informatie van de ingelogde gebruiker op
+$gebruiker = $_SESSION['gebruiker'];
+
+// Toon de persoonlijke informatie
+echo "Welkom, " . htmlspecialchars($gebruiker['naam']) . "!<br>";
+echo "E-mailadres: " . htmlspecialchars($gebruiker['email']) . "<br>";
+echo "Gebruikers-ID: " . htmlspecialchars($gebruiker['id']) . "<br>";
+?>

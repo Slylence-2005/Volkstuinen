@@ -1,0 +1,179 @@
+body {
+  font-family: Arial, sans-serif;
+  font-size: 140%;
+  margin: 0;
+  padding: 0;
+  background-color: #444;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 80px;
+  background-color: #38393c;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1001; 
+}
+
+.sidebar img {
+  width: 50px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.sidebar .icon {
+  width: 40px;
+  height: 40px;
+  background-color: #1c1d20;
+  border-radius: 5px;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.sidebar a:hover {
+  color: #4A8C2C;
+}
+
+.header {
+  background-color: #4A8C2C;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 60px;
+  font-size: 18px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background-color: #333;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  padding: 28px;
+  margin-left: 60px;
+}
+
+.image-container {
+  flex: 1;
+  margin-right: 28px;
+  position: relative;
+}
+
+.image-container img {
+  width: 80%;
+  height: auto;
+}
+
+.grondbeheer-section {
+  flex: 1;
+}
+
+.grondbeheer-header {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.grondbeheer-content {
+  background-color: #444;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.table {
+  width: 45%;
+  background-color: #555;
+  border-radius: 4px;
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+.table::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table::-webkit-scrollbar-thumb {
+  background-color: #4CAF50;
+  border-radius: 10px;
+}
+
+.table::-webkit-scrollbar-thumb:hover {
+  background-color: #45a049;
+}
+
+.table::-webkit-scrollbar-track {
+  background-color: #444;
+}
+
+.table-header {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 7px;
+  text-align: center;
+}
+
+.table-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #666;
+  margin-bottom: 5px;
+  padding: 7px;
+  border-radius: 4px;
+  height: 70px;
+  align-items: center;
+  text-align: center;
+}
+
+.parcel-name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.parcel-size {
+  font-size: 14px;
+  color: #ddd;
+}
+
+.grondbeheer-buttons {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.grondbeheer-buttons .btn {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.grondbeheer-buttons .btn:hover {
+  background-color: #45a049;
+}

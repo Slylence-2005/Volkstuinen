@@ -1,0 +1,5 @@
+Tuinen kunnen toevoegen als Admin/optie om tuinen te kunnen aanpassen qua meters (opsplitsing van tuinen)
+
+nieuwssectie binnenin het complex (dit moet gedaan kunnen worden door een admin en/of bestuurder) (berichten zijn complex gerelateerd en komt binnen voor elke persoon binnen een bepaald complex).
+
+Terug kunnen kijken op berichten (elke rank moet dit kunnen) (nieuwe berichten/archief berichten).
